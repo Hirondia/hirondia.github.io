@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez toutes les fonctionnalités de Hirondia Pro : balance fusionnée, bilan actif, feuille d'alertes et bien plus.">
+    <title>Fonctionnalités - Hirondia Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #764ba2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --info: #4299e1;
+            --shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* FEATURE DETAIL */
+        .feature-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-detail:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .feature-detail:nth-child(even) .feature-content {
+            order: 2;
+        }
+
+        .feature-detail:nth-child(even) .feature-visual {
+            order: 1;
+        }
+
+        .feature-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .feature-list i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .feature-visual {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-visual::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .feature-visual i {
+            font-size: 10rem;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-screenshot {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* WORKFLOW SECTION */
+        .workflow-section {
+            padding: 100px 2rem;
+            background: var(--bg-white);
+        }
+
+        .workflow-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .workflow-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .workflow-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -2rem;
+            top: 50px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .workflow-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .workflow-step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-section {
+            padding: 100px 2rem;
+            background: var(--bg-light);
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .comparison-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .check {
+            color: var(--success);
+            font-size: 1.5rem;
+        }
+
+        .comparison-table .cross {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        /* TECHNICAL SPECS */
+        .specs-section {
+            padding: 100px 2rem;
+            background: var(--bg-white);
+        }
+
+        .specs-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .specs-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .spec-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .spec-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .spec-card h3 i {
+            color: var(--primary);
+        }
+
+        .spec-card ul {
+            list-style: none;
+        }
+
+        .spec-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 100px 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 1.2rem 3rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .feature-detail {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 50px 1rem;
+            }
+
+            .feature-detail:nth-child(even) .feature-content,
+            .feature-detail:nth-child(even) .feature-visual {
+                order: 0;
+            }
+
+            .feature-visual {
+                min-height: 250px;
+            }
+
+            .feature-visual i {
+                font-size: 6rem;
+            }
+
+            .workflow-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HIRONDIA PRO</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+                <li><a href="telechargement.html">Télécharger</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="telechargement.html" class="cta-button">Télécharger</a>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>Fonctionnalités Complètes</h1>
+        <p>Découvrez comment Hirondia Pro transforme votre processus d'audit avec des outils professionnels et une automatisation intelligente</p>
+    </section>
+
+    <!-- FEATURE 1: BALANCE FUSIONNÉE -->
+    <section class="feature-detail">
+        <div class="feature-content">
+            <span class="feature-tag">MODULE PRINCIPAL</span>
+            <h2>Balance Fusionnée Automatique</h2>
+            <p>Générez automatiquement votre balance fusionnée (N et N-1) en quelques clics. Le système détecte intelligemment les comptes, applique le formatage professionnel et produit un document conforme PCT prêt à l'emploi.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Import automatique Excel (.xlsx, .xls)</li>
+                <li><i class="fas fa-check-circle"></i> Fusion intelligente des exercices N et N-1</li>
+                <li><i class="fas fa-check-circle"></i> Détection automatique des en-têtes</li>
+                <li><i class="fas fa-check-circle"></i> Regroupement par classes comptables</li>
+                <li><i class="fas fa-check-circle"></i> Calculs automatisés (soldes, variations)</li>
+                <li><i class="fas fa-check-circle"></i> Formatage professionnel avec mise en forme</li>
+                <li><i class="fas fa-check-circle"></i> Export Excel prêt pour présentation</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <i class="fas fa-table"></i>
+        </div>
+    </section>
+
+    <!-- FEATURE 2: BILAN ACTIF -->
+    <section class="feature-detail">
+        <div class="feature-content">
+            <span class="feature-tag">ÉTATS FINANCIERS</span>
+            <h2>Bilan Actif Professionnel</h2>
+            <p>Création automatique du bilan actif selon les normes comptables tunisiennes. Regroupements intelligents par rubriques, calculs de totaux et sous-totaux, présentation conforme aux standards professionnels.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Structure conforme au modèle PCT</li>
+                <li><i class="fas fa-check-circle"></i> Regroupement automatique par classes</li>
+                <li><i class="fas fa-check-circle"></i> Actifs immobilisés détaillés</li>
+                <li><i class="fas fa-check-circle"></i> Actifs courants avec ventilation</li>
+                <li><i class="fas fa-check-circle"></i> Calculs automatiques de totaux</li>
+                <li><i class="fas fa-check-circle"></i> Comparaison N vs N-1</li>
+                <li><i class="fas fa-check-circle"></i> Mise en page professionnelle</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+    </section>
+
+    <!-- FEATURE 3: FEUILLE D'ALERTES -->
+    <section class="feature-detail">
+        <div class="feature-content">
+            <span class="feature-tag">CONTRÔLE QUALITÉ</span>
+            <h2>Feuille d'Alertes Intelligente</h2>
+            <p>Détection automatique des anomalies comptables, incohérences et points d'attention nécessitant une revue approfondie. Gain de temps considérable dans la phase de contrôle.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Détection des comptes débiteurs/créditeurs anormaux</li>
+                <li><i class="fas fa-check-circle"></i> Identification des variations significatives</li>
+                <li><i class="fas fa-check-circle"></i> Contrôle de cohérence entre exercices</li>
+                <li><i class="fas fa-check-circle"></i> Alertes sur soldes inhabituels</li>
+                <li><i class="fas fa-check-circle"></i> Recommandations de vérification</li>
+                <li><i class="fas fa-check-circle"></i> Export des points d'attention</li>
+                <li><i class="fas fa-check-circle"></i> Personnalisation des seuils d'alerte</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+    </section>
+
+    <!-- FEATURE 4: PRÉVISUALISATION -->
+    <section class="feature-detail">
+        <div class="feature-content">
+            <span class="feature-tag">VISUALISATION</span>
+            <h2>Prévisualisation Interactive</h2>
+            <p>Visualisez tous vos documents dans une interface HTML moderne avant impression ou export. Navigation fluide entre les pages, impression optimisée et export multi-formats.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Interface HTML responsive</li>
+                <li><i class="fas fa-check-circle"></i> Navigation entre les sections</li>
+                <li><i class="fas fa-check-circle"></i> Mode impression optimisé</li>
+                <li><i class="fas fa-check-circle"></i> Export PDF intégré</li>
+                <li><i class="fas fa-check-circle"></i> Thème clair/sombre</li>
+                <li><i class="fas fa-check-circle"></i> Zoom et recherche dans le document</li>
+                <li><i class="fas fa-check-circle"></i> Ouverture dans navigateur externe</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <i class="fas fa-eye"></i>
+        </div>
+    </section>
+
+    <!-- FEATURE 5: INTERFACE -->
+    <section class="feature-detail">
+        <div class="feature-content">
+            <span class="feature-tag">EXPÉRIENCE UTILISATEUR</span>
+            <h2>Interface Moderne Premium</h2>
+            <p>Design soigné avec navigation intuitive par sidebar, cartes statistiques en temps réel, animations fluides et thème adaptable. Une expérience utilisateur comparable aux meilleurs logiciels du marché.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Design moderne et épuré</li>
+                <li><i class="fas fa-check-circle"></i> Navigation par sidebar professionnelle</li>
+                <li><i class="fas fa-check-circle"></i> Tableau de bord avec statistiques</li>
+                <li><i class="fas fa-check-circle"></i> Thème sombre/clair automatique</li>
+                <li><i class="fas fa-check-circle"></i> Animations fluides et discrètes</li>
+                <li><i class="fas fa-check-circle"></i> Raccourcis clavier intégrés</li>
+                <li><i class="fas fa-check-circle"></i> Responsive (redimensionnement fenêtre)</li>
+            </ul>
+        </div>
+        <div class="feature-visual">
+            <i class="fas fa-desktop"></i>
+        </div>
+    </section>
+
+    <!-- WORKFLOW SECTION -->
+    <section class="workflow-section">
+        <h2>Processus d'Audit Simplifié</h2>
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <h3>Configuration</h3>
+                <p>Saisir la fiche signalétique du client et importer les fichiers Balance N et N-1</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <h3>Génération</h3>
+                <p>Cliquer sur "Générer le classeur complet" pour l'automatisation totale</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <h3>Contrôle</h3>
+                <p>Consulter la feuille d'alertes et vérifier les points d'attention</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <h3>Export</h3>
+                <p>Prévisualiser et exporter le rapport final en HTML ou PDF</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <h2>Hirondia Pro vs Méthodes Traditionnelles</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fonctionnalité</th>
+                        <th style="text-align: center;">Méthode Manuelle</th>
+                        <th style="text-align: center;">Hirondia Pro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Temps de génération balance</strong></td>
+                        <td style="text-align: center;">2-4 heures</td>
+                        <td style="text-align: center; color: var(--success); font-weight: 600;">2 minutes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risque d'erreurs de calcul</strong></td>
+                        <td style="text-align: center;"><i class="cross fas fa-times"></i></td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Zéro erreur</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formatage professionnel</strong></td>
+                        <td style="text-align: center;">Manuel, long</td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Automatique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Détection anomalies</strong></td>
+                        <td style="text-align: center;">Manuelle, partielle</td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Intelligente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conformité PCT</strong></td>
+                        <td style="text-align: center;">À vérifier</td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Garantie</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prévisualisation interactive</strong></td>
+                        <td style="text-align: center;"><i class="cross fas fa-times"></i></td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Incluse</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mises à jour</strong></td>
+                        <td style="text-align: center;">N/A</td>
+                        <td style="text-align: center;"><i class="check fas fa-check"></i> Gratuites</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- TECHNICAL SPECS -->
+    <section class="specs-section">
+        <h2>Spécifications Techniques</h2>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <h3><i class="fas fa-cogs"></i> Technologies</h3>
+                <ul>
+                    <li>• Python 3.11+</li>
+                    <li>• PySide6 (Qt 6)</li>
+                    <li>• Pandas & OpenPyXL</li>
+                    <li>• Architecture modulaire</li>
+                </ul>
+            </div>
+            <div class="spec-card">
+                <h3><i class="fas fa-laptop"></i> Configuration</h3>
+                <ul>
+                    <li>• Windows 10/11 (64-bit)</li>
+                    <li>• 4 Go RAM minimum</li>
+                    <li>• 500 Mo espace disque</li>
+                    <li>• Résolution 1280x720+</li>
+                </ul>
+            </div>
+            <div class="spec-card">
+                <h3><i class="fas fa-file-alt"></i> Formats</h3>
+                <ul>
+                    <li>• Import: Excel (.xlsx, .xls)</li>
+                    <li>• Export: Excel, HTML, PDF</li>
+                    <li>• JSON pour paramètres</li>
+                    <li>• UTF-8 natif</li>
+                </ul>
+            </div>
+            <div class="spec-card">
+                <h3><i class="fas fa-shield-alt"></i> Sécurité</h3>
+                <ul>
+                    <li>• Traitement local (no cloud)</li>
+                    <li>• Aucune collecte de données</li>
+                    <li>• Sauvegarde automatique</li>
+                    <li>• Conformité RGPD</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <h2>Prêt à gagner 70% de temps ?</h2>
+        <p>Téléchargez Hirondia Pro et transformez votre processus d'audit dès aujourd'hui</p>
+        <a href="telechargement.html" class="btn-white">
+            <i class="fas fa-download"></i> Télécharger gratuitement
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Hirondia Solutions. Tous droits réservés.</p>
+        <div style="margin-top: 1rem;">
+            <a href="index.html">Accueil</a>
+            <a href="fonctionnalites.html">Fonctionnalités</a>
+            <a href="telechargement.html">Télécharger</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html

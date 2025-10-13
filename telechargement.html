@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Téléchargez Hirondia Pro gratuitement. Essai 30 jours, installation simple, support inclus.">
+    <title>Téléchargement - Hirondia Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #764ba2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --info: #4299e1;
+            --shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* DOWNLOAD SECTION */
+        .download-section {
+            padding: 80px 2rem;
+            background: var(--bg-white);
+        }
+
+        .download-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .download-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .download-info {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-button i {
+            font-size: 1.5rem;
+        }
+
+        .download-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .stat-item i {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        /* REQUIREMENTS */
+        .requirements-section {
+            padding: 80px 2rem;
+            background: var(--bg-light);
+        }
+
+        .requirements-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .req-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .req-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .req-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .req-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* INSTALLATION GUIDE */
+        .installation-section {
+            padding: 80px 2rem;
+            background: var(--bg-white);
+        }
+
+        .installation-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .installation-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            min-width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* CHANGELOG */
+        .changelog-section {
+            padding: 80px 2rem;
+            background: var(--bg-light);
+        }
+
+        .changelog-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .changelog-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .version-block {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .version-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .version-date {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .version-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .version-type.major {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .version-type.minor {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .changelog-list {
+            list-style: none;
+        }
+
+        .changelog-list li {
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: var(--text-dark);
+        }
+
+        .changelog-list i {
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .changelog-list .new {
+            color: var(--success);
+        }
+
+        .changelog-list .fix {
+            color: var(--info);
+        }
+
+        .changelog-list .improve {
+            color: var(--warning);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 80px 2rem;
+            background: var(--bg-white);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* SUPPORT */
+        .support-section {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .support-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .support-cards {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .support-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .support-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .support-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .download-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .download-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .download-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">HIRONDIA PRO</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+                <li><a href="telechargement.html">Télécharger</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <h1>Télécharger Hirondia Pro</h1>
+        <p>Essai gratuit 30 jours • Sans engagement • Support inclus</p>
+    </section>
+
+    <!-- DOWNLOAD SECTION -->
+    <section class="download-section">
+        <div class="download-container">
+            <div class="download-card">
+                <span class="version-badge">
+                    <i class="fas fa-star"></i> Version 2.0 - Dernière version
+                </span>
+                <h2>Hirondia Pro pour Windows</h2>
+                <p class="download-info">
+                    Logiciel d'audit financier complet avec interface moderne PySide6
+                </p>
+                
+                <button class="download-button" onclick="handleDownload()">
+                    <i class="fas fa-download"></i>
+                    Télécharger maintenant
+                </button>
+
+                <div class="download-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-windows"></i>
+                        <span>Windows 10/11</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-hdd"></i>
+                        <span>500 Mo</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Sécurisé</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Essai 30 jours</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; color: var(--text-light); margin-top: 2rem;">
+                <p><i class="fas fa-info-circle"></i> Le téléchargement démarrera automatiquement. Si ce n'est pas le cas, <a href="#" onclick="handleDownload(); return false;" style="color: var(--primary); font-weight: 600;">cliquez ici</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REQUIREMENTS -->
+    <section class="requirements-section">
+        <div class="download-container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-dark);">Configuration Requise</h2>
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <div class="req-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Système</h3>
+                    <p>Windows 10 (64-bit)<br>Windows 11 (64-bit)</p>
+                </div>
+                <div class="req-card">
+                    <div class="req-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3>Mémoire RAM</h3>
+                    <p>4 Go minimum<br>8 Go recommandé</p>
+                </div>
+                <div class="req-card">
+                    <div class="req-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <h3>Espace Disque</h3>
+                    <p>500 Mo minimum<br>1 Go recommandé</p>
+                </div>
+                <div class="req-card">
+                    <div class="req-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Résolution</h3>
+                    <p>1280x720 minimum<br>1920x1080 recommandé</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTALLATION GUIDE -->
+    <section class="installation-section">
+        <h2>Guide d'Installation</h2>
+        <div class="installation-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Télécharger le fichier</h3>
+                    <p>Cliquez sur le bouton de téléchargement ci-dessus. Le fichier <strong>HirondiaPro_v2.0_Setup.exe</strong> sera téléchargé dans votre dossier Téléchargements.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Exécuter l'installateur</h3>
+                    <p>Double-cliquez sur le fichier téléchargé. Si Windows affiche un avertissement de sécurité, cliquez sur "Informations complémentaires" puis "Exécuter quand même".</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Suivre l'assistant</h3>
+                    <p>Acceptez les termes de la licence, choisissez le dossier d'installation (par défaut : C:\Program Files\Hirondia Pro) et cliquez sur "Installer".</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Lancer Hirondia Pro</h3>
+                    <p>Une fois l'installation terminée, lancez Hirondia Pro depuis le menu Démarrer ou le raccourci sur le bureau. La période d'essai de 30 jours démarre automatiquement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHANGELOG -->
+    <section class="changelog-section">
+        <h2>Notes de Version</h2>
+        <div class="changelog-container">
+            <div class="version-block">
+                <div class="version-header">
+                    <div>
+                        <span class="version-number">v2.0</span>
+                        <span class="version-type major">Majeure</span>
+                    </div>
+                    <span class="version-date">12 Janvier 2025</span>
+                </div>
+                <ul class="changelog-list">
+                    <li><i class="fas fa-plus-circle new"></i> Interface moderne avec navigation sidebar</li>
+                    <li><i class="fas fa-plus-circle new"></i> Tableau de bord avec cartes statistiques</li>
+                    <li><i class="fas fa-plus-circle new"></i> Thème clair/sombre automatique</li>
+                    <li><i class="fas fa-plus-circle new"></i> Prévisualisation HTML interactive</li>
+                    <li><i class="fas fa-wrench improve"></i> Performance optimisée (3x plus rapide)</li>
+                    <li><i class="fas fa-wrench improve"></i> Gestion mémoire améliorée</li>
+                    <li><i class="fas fa-bug fix"></i> Correction des bugs d'import Excel</li>
+                </ul>
+            </div>
+
+            <div class="version-block">
+                <div class="version-header">
+                    <div>
+                        <span class="version-number">v1.5</span>
+                        <span class="version-type minor">Mineure</span>
+                    </div>
+                    <span class="version-date">20 Novembre 2024</span>
+                </div>
+                <ul class="changelog-list">
+                    <li><i class="fas fa-plus-circle new"></i> Module Bilan Actif automatique</li>
+                    <li><i class="fas fa-plus-circle new"></i> Export PDF intégré</li>
+                    <li><i class="fas fa-wrench improve"></i> Détection améliorée des anomalies</li>
+                    <li><i class="fas fa-bug fix"></i> Corrections mineures</li>
+                </ul>
+            </div>
+
+            <div class="version-block">
+                <div class="version-header">
+                    <div>
+                        <span class="version-number">v1.0</span>
+                        <span class="version-type major">Initiale</span>
+                    </div>
+                    <span class="version-date">15 Septembre 2024</span>
+                </div>
+                <ul class="changelog-list">
+                    <li><i class="fas fa-plus-circle new"></i> Première version publique</li>
+                    <li><i class="fas fa-plus-circle new"></i> Balance fusionnée automatique</li>
+                    <li><i class="fas fa-plus-circle new"></i> Feuille d'alertes</li>
+                    <li><i class="fas fa-plus-circle new"></i> Conformité PCT</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <h2>Questions Fréquentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Le logiciel est-il vraiment gratuit pendant 30 jours ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Oui, totalement gratuit pendant 30 jours avec toutes les fonctionnalités débloquées. Aucune carte bancaire requise. Après l'essai, vous pouvez souscrire à une licence ou continuer en mode lecture seule.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quels formats de fichiers sont supportés ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Hirondia Pro supporte les fichiers Excel (.xlsx, .xls) en import et peut exporter en Excel, HTML et PDF. Tous les fichiers sont traités localement sur votre ordinateur pour garantir la confidentialité.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Le logiciel nécessite-t-il une connexion Internet ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Non, Hirondia Pro fonctionne 100% hors ligne. Aucune connexion Internet n'est requise après l'installation. Vos données restent privées et ne sont jamais envoyées sur un serveur externe.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Comment obtenir de l'aide si je rencontre un problème ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Notre équipe support est disponible par email (contact@hirondia.com), chat en ligne sur le site, ou via le formulaire de contact. Les utilisateurs sous licence bénéficient d'un support prioritaire sous 4h.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Les mises à jour sont-elles gratuites ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Oui, toutes les mises à jour sont gratuites pour les utilisateurs sous licence active. Vous recevrez automatiquement les nouvelles fonctionnalités, correctifs et améliorations.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Puis-je utiliser Hirondia Pro sur plusieurs ordinateurs ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    La licence individuelle permet l'installation sur 2 ordinateurs. Pour les cabinets, nous proposons des licences multi-postes avec tarifs dégressifs. Contactez-nous pour un devis personnalisé.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="support-section">
+        <h2>Besoin d'Aide ?</h2>
+        <p>Notre équipe est là pour vous accompagner</p>
+        <div class="support-cards">
+            <div class="support-card">
+                <i class="fas fa-book"></i>
+                <h3>Documentation</h3>
+                <p><a href="#docs">Guides & Tutoriels</a></p>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-video"></i>
+                <h3>Vidéos</h3>
+                <p><a href="#videos">Démos & Formations</a></p>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:contact@hirondia.com">contact@hirondia.com</a></p>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-comments"></i>
+                <h3>Chat en Direct</h3>
+                <p><a href="#chat">Assistance instantanée</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Hirondia Solutions. Tous droits réservés.</p>
+        <div style="margin-top: 1rem;">
+            <a href="index.html">Accueil</a>
+            <a href="fonctionnalites.html">Fonctionnalités</a>
+            <a href="telechargement.html">Télécharger</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Download handler
+        function handleDownload() {
+            // Dans la version réelle, ceci déclencherait le téléchargement du fichier
+            // Pour GitHub Pages, vous mettrez le lien vers votre release
+            
+            alert('Téléchargement en cours...\n\nDans la version finale :\n- Le fichier .exe sera hébergé sur GitHub Releases\n- Le téléchargement démarrera automatiquement\n\nPour le moment, cette démo vous montre l\'interface complète du site.');
+            
+            // Exemple de lien GitHub Release (à adapter) :
+            // window.location.href = 'https://github.com/votrecompte/hirondia/releases/download/v2.0/HirondiaPro_v2.0_Setup.exe';
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html
