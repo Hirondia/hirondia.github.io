@@ -132,12 +132,15 @@
         .beta-badge {
             background: var(--warning);
             color: white;
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: 700;
+            letter-spacing: 0.5px;
             margin-left: 0.5rem;
             animation: pulse 2s infinite;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         @keyframes pulse {
@@ -551,12 +554,13 @@
     <!-- HEADER -->
     <header id="header">
         <nav>
-            <a href="#" class="logo">
+            <a href="https://hirondia.github.io/" class="logo">
                 <img src="Hirondia_logo.png" alt="Hirondia Logo">
                 Hirondia Pro
                 <span class="beta-badge">BETA</span>
             </a>
             <ul class="nav-links">
+                <li><a href="https://hirondia.github.io/">Accueil</a></li>
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
                 <li><a href="#avantages">Avantages</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -581,8 +585,8 @@
                 <a href="https://github.com/Hirondia/hirondia.github.io/releases/download/v1.0.0_beta/HirondiaPro-v1.0-beta-.0.4-.4.2-.6.2.zip" class="btn-primary">
                     <i class="fas fa-download"></i> Télécharger gratuitement
                 </a>
-                <a href="https://github.com/Hirondia/hirondia.github.io/releases/tag/v1.0.0_beta" class="btn-secondary">
-                    <i class="fas fa-play-circle"></i> Voir la démo
+                <a href="#fonctionnalites" class="btn-secondary">
+                    <i class="fas fa-info-circle"></i> Découvrir les fonctionnalités
                 </a>
             </div>
         </div>
